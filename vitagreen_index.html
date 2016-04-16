@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>維特健靈 Vita Green</title>
+
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/app.css?v=a69bacdcec1841aea678078d318b4709">
+</head>
+<body>
+<!-- loading -->
+<div class="loader"><h1>LOADING ...</h1><span></span><span></span><span></span></div>
+
+<div class="vitagreen">
+    <div class="content"><img src="images/vitagreen/bg.png" alt="" class="bg"></div>
+    <img src="images/transparent.png" alt="" class="get1">
+    <img src="images/transparent.png" alt="" class="get2">
+    <img src="images/transparent.png" alt="" class="get3">
+    <img src="images/transparent.png" alt="" class="get4">
+    <img src="images/transparent.png" alt="" class="locator">
+
+    <img src="images/vitagreen/qr.png" alt="" class="qr">
+    <img src="images/vitagreen/maps.png" alt="" class="maps">
+</div>
+
+<!--Script
+====================================================== -->
+<script src="js/zepto/zepto.min.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script src="js/motion/loader.min.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script src="js/swiper/swiper.min.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script src="js/swiper/swiper.animate1.0.2.min.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script src="js/motion/landscape.min.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script src="js/fastclick/fastclick.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script src="js/motion/overlay.min.js?v=a69bacdcec1841aea678078d318b4709"></script>
+<script type="text/javascript">
+    Zepto(function($){
+
+        // loader
+        var getSource = function(){
+            var res = ["images/vitagreen/bg.png"]
+            $('img').each(function(i, o){
+                var val = $(o).attr("data-src");
+                val && res.push(val);
+            })
+            return res;
+        }
+        new mo.Loader(getSource(),{
+            loadType : 1,
+            minTime : 300,
+            onLoading : function(count,total){
+                console.log('onloading:single loaded:',arguments)
+                $(".loader h1").html('LOADING ('+Math.round(count/total*100)+'%)');
+            },
+            onComplete : function(time){
+                 console.log('oncomplete:all source loaded:',arguments);
+                $(".loader").hide();
+                $(".vitagreen").show();
+            }
+        });
+
+
+        // Landscape
+        var Landscape = new mo.Landscape({
+            pic: 'js/motion/landscape.png',
+            picZoom: 3,
+            mode:'portrait',//portrait,landscape
+            prefix:'Shine'
+        });
+
+        // fastclick
+        FastClick.attach(document.body);
+
+
+        $(".vitagreen .get1").on("touchend", function(){
+            window.overlay1 = new mo.Overlay({
+                content: '<img src="images/vitagreen/qr.png" alt="">',
+                width: 220,
+                height: 220
+            });
+            
+            overlay1.on('open', function(){
+                //$(".mo-pop").css({"top": "0px"});
+
+                $('.mo-pop-wrap').on('touchend', function(){
+                    window.overlay1.close();
+                });
+            });
+
+        });
+
+        $(".vitagreen .get2").on("touchend", function(){
+            window.overlay2 = new mo.Overlay({
+                content: '<img src="images/vitagreen/qr.png" alt="">',
+                width: 220,
+                height: 220
+            });
+            
+            overlay2.on('open', function(){
+                //$(".mo-pop").css({"top": "0px"});
+
+                $('.mo-pop-wrap').on('touchend', function(){
+                    window.overlay2.close();
+                });
+            });
+
+        });
+
+        $(".vitagreen .get3").on("touchend", function(){
+            window.overlay3 = new mo.Overlay({
+                content: '<img src="images/vitagreen/qr.png" alt="">',
+                width: 220,
+                height: 220
+            });
+            
+            overlay3.on('open', function(){
+                //$(".mo-pop").css({"top": "0px"});
+
+                $('.mo-pop-wrap').on('touchend', function(){
+                    window.overlay3.close();
+                });
+            });
+
+        });
+
+        $(".vitagreen .get4").on("touchend", function(){
+            window.overlay4 = new mo.Overlay({
+                content: '<img src="images/vitagreen/qr.png" alt="">',
+                width: 220,
+                height: 220
+            });
+            
+            overlay4.on('open', function(){
+                //$(".mo-pop").css({"top": "0px"});
+
+                $('.mo-pop-wrap').on('touchend', function(){
+                    window.overlay4.close();
+                });
+            });
+
+        });
+
+        $(".vitagreen .locator").on("touchend", function(){
+            window.location.href="vitagreen_maps.html";
+
+        });
+
+    });
+</script>
+</body>
+</html>
